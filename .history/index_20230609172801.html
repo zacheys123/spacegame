@@ -16,7 +16,7 @@
 		</style>
 	</head>
 
-	<body style="position: relative">
+	<body style="display:flex;">
 		<p
 			style="
 				position: fixed;
@@ -32,7 +32,7 @@
 			<span>Score:</span>
 			<span id="score">0</span>
 		</p>
-		<div
+		<output
 			id="scoreboard"
 			style="
 				display: none;
@@ -47,23 +47,23 @@
 				background-size: cover;
 			"
 		>
-			<div
+			<output
 				style="
 					position: absolute;
 					flex-direction: column;
 					padding: 3rem;
 				"
 			>
-				<div style="margin-bottom: 3rem">
+				<output style="margin-bottom: 3rem">
 					<span style="font-size: 3rem; color: yellow"; background: white"
 						>GameOver :<span
 							id="fullscore"
-							style="color: white; padding: 1rem;""
+							style="color: white    ; padding: 1rem;""
 						></span
 						><span> Points</span></span
 					>
-				</div>
-				<div style="margin-top: 1rem">
+				</output>
+				<output style="margin-top: 1rem">
 					<button
 						class="button"
 						style="
@@ -78,9 +78,9 @@
 					>
 						<span id="info">Restart Game</span>
 					</button>
-				</div>
-			</div>
-		</div>
+				</output>
+			</output>
+		</output>
 		<canvas id="canvas" ></canvas>
 		<script src="index.js"></script>
 	</body>

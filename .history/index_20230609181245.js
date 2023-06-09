@@ -374,7 +374,7 @@ function animate() {
 						canvas.style.display = 'none';
 
 						const scorestorage = JSON.parse(
-							localStorage.getItem('newrecord'),
+							localStorage.getItem('record'),
 						);
 						if (parseInt(scoreEl) > scorestorage) {
 							localStorage.setItem('newrecord', parseInt(scoreEl));

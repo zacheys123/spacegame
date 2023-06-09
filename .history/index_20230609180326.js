@@ -9,40 +9,28 @@ canvas.width = innerWidth;
 canvas.height = innerHeight;
 
 let game = { over: false, active: true, score: false, start: false };
-button.addEventListener('click', restart);
+button.addEventListener('click', restart());
 // Player class
 document.addEventListener('DOMContentLoaded', () => {
 	parseInt(localStorage.setItem('score', 0), 10);
 });
 function restart() {
-	localStorage.removeItem('score');
-	setTimeout(() => {
-		game.start = true;
-		if (game.start) {
-			window.location.reload();
+	addEventListener('keydown', ({ key }) => {
+		if (key === 'Enter') {
+			localStorage.removeItem('score');
+			setTimeout(() => {
+				game.start = true;
+				if (game.start) {
+					window.location.reload();
 
-			scoreboard.style.display = 'none';
+					scoreboard.style.display = 'none';
+				}
+			}, 3000);
+			info.textContent = 'Loading Game...';
+			console.log(key);
 		}
-	}, 3000);
-	info.textContent = 'Loading Game...';
+	});
 }
-
-addEventListener('keydown', ({ key }) => {
-	if (key === 'Enter') {
-		localStorage.removeItem('score');
-		setTimeout(() => {
-			game.start = true;
-			if (game.start) {
-				window.location.reload();
-
-				scoreboard.style.display = 'none';
-			}
-		}, 3000);
-		info.textContent = 'Loading Game...';
-		console.log(key);
-	}
-});
-
 class Player {
 	constructor() {
 		this.velocity = { x: 0, y: 0 };
@@ -374,7 +362,7 @@ function animate() {
 						canvas.style.display = 'none';
 
 						const scorestorage = JSON.parse(
-							localStorage.getItem('newrecord'),
+							localStorage.getItem('score'),
 						);
 						if (parseInt(scoreEl) > scorestorage) {
 							localStorage.setItem('newrecord', parseInt(scoreEl));

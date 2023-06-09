@@ -27,7 +27,7 @@ function restart() {
 	info.textContent = 'Loading Game...';
 }
 
-addEventListener('keydown', ({ key }) => {
+button.addEventListener('keydown', ({ key }) => {
 	if (key === 'Enter') {
 		localStorage.removeItem('score');
 		setTimeout(() => {
@@ -374,7 +374,7 @@ function animate() {
 						canvas.style.display = 'none';
 
 						const scorestorage = JSON.parse(
-							localStorage.getItem('newrecord'),
+							localStorage.getItem('score'),
 						);
 						if (parseInt(scoreEl) > scorestorage) {
 							localStorage.setItem('newrecord', parseInt(scoreEl));

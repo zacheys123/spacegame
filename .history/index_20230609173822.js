@@ -9,13 +9,8 @@ canvas.width = innerWidth;
 canvas.height = innerHeight;
 
 let game = { over: false, active: true, score: false, start: false };
-button.addEventListener('click', restart);
-// Player class
-document.addEventListener('DOMContentLoaded', () => {
-	parseInt(localStorage.setItem('score', 0), 10);
-});
-function restart() {
-	localStorage.removeItem('score');
+button.addEventListener('click', (e) => {
+	e.preventDefault();
 	setTimeout(() => {
 		game.start = true;
 		if (game.start) {
@@ -25,23 +20,8 @@ function restart() {
 		}
 	}, 3000);
 	info.textContent = 'Loading Game...';
-}
-
-addEventListener('keydown', ({ key }) => {
-	if (key === 'Enter') {
-		localStorage.removeItem('score');
-		setTimeout(() => {
-			game.start = true;
-			if (game.start) {
-				window.location.reload();
-
-				scoreboard.style.display = 'none';
-			}
-		}, 3000);
-		info.textContent = 'Loading Game...';
-		console.log(key);
-	}
 });
+// Player class
 
 class Player {
 	constructor() {
@@ -372,17 +352,12 @@ function animate() {
 					if (game.score) {
 						scoreboard.style.display = 'flex';
 						canvas.style.display = 'none';
-
-						const scorestorage = JSON.parse(
-							localStorage.getItem('newrecord'),
-						);
-						if (parseInt(scoreEl) > scorestorage) {
-							localStorage.setItem('newrecord', parseInt(scoreEl));
-							fullscore.textContent =
-								'New Record Set ' + parseInt(scoreEl);
-						} else {
-							localStorage.setItem('score', parseInt(scoreEl));
+						localStorage.setItem('record', JSON, stringify(scoreEl));
+						const record = JSON.parse(localStorage.getItem('record'));
+						if (scoreEl > record) {
 							fullscore.textContent = scoreEl;
+						} else {
+							fullscore.textContent = 'New Record Set ' + scoreEl;
 						}
 					}
 				}, 4000);

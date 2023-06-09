@@ -1,21 +1,17 @@
 const canvas = document.querySelector('#canvas');
+const canvasdiv = document.querySelector('#canvasdiv');
 const score = document.querySelector('#score');
 const button = document.querySelector('.button');
 const scoreboard = document.querySelector('#scoreboard');
 const fullscore = document.querySelector('#fullscore');
 const info = document.querySelector('#info');
 const c = canvas.getContext('2d');
-canvas.width = innerWidth;
-canvas.height = innerHeight;
+canvas.width = 1024;
+canvas.height = 576;
 
 let game = { over: false, active: true, score: false, start: false };
-button.addEventListener('click', restart);
-// Player class
-document.addEventListener('DOMContentLoaded', () => {
-	parseInt(localStorage.setItem('score', 0), 10);
-});
-function restart() {
-	localStorage.removeItem('score');
+button.addEventListener('click', (e) => {
+	e.preventDefault();
 	setTimeout(() => {
 		game.start = true;
 		if (game.start) {
@@ -25,23 +21,8 @@ function restart() {
 		}
 	}, 3000);
 	info.textContent = 'Loading Game...';
-}
-
-addEventListener('keydown', ({ key }) => {
-	if (key === 'Enter') {
-		localStorage.removeItem('score');
-		setTimeout(() => {
-			game.start = true;
-			if (game.start) {
-				window.location.reload();
-
-				scoreboard.style.display = 'none';
-			}
-		}, 3000);
-		info.textContent = 'Loading Game...';
-		console.log(key);
-	}
 });
+// Player class
 
 class Player {
 	constructor() {
@@ -371,19 +352,8 @@ function animate() {
 
 					if (game.score) {
 						scoreboard.style.display = 'flex';
-						canvas.style.display = 'none';
-
-						const scorestorage = JSON.parse(
-							localStorage.getItem('newrecord'),
-						);
-						if (parseInt(scoreEl) > scorestorage) {
-							localStorage.setItem('newrecord', parseInt(scoreEl));
-							fullscore.textContent =
-								'New Record Set ' + parseInt(scoreEl);
-						} else {
-							localStorage.setItem('score', parseInt(scoreEl));
-							fullscore.textContent = scoreEl;
-						}
+						canvasdiv.style.display = 'none';
+						fullscore.textContent = scoreEl;
 					}
 				}, 4000);
 				setTimeout(() => {

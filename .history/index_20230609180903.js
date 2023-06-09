@@ -27,21 +27,21 @@ function restart() {
 	info.textContent = 'Loading Game...';
 }
 
-addEventListener('keydown', ({ key }) => {
-	if (key === 'Enter') {
-		localStorage.removeItem('score');
-		setTimeout(() => {
-			game.start = true;
-			if (game.start) {
-				window.location.reload();
+// button.addEventListener('keydown', ({ key }) => {
+// 	if (key === 'Enter') {
+// 		localStorage.removeItem('score');
+// 		setTimeout(() => {
+// 			game.start = true;
+// 			if (game.start) {
+// 				window.location.reload();
 
-				scoreboard.style.display = 'none';
-			}
-		}, 3000);
-		info.textContent = 'Loading Game...';
-		console.log(key);
-	}
-});
+// 				scoreboard.style.display = 'none';
+// 			}
+// 		}, 3000);
+// 		info.textContent = 'Loading Game...';
+// 		console.log(key);
+// 	}
+// });
 
 class Player {
 	constructor() {
@@ -374,7 +374,7 @@ function animate() {
 						canvas.style.display = 'none';
 
 						const scorestorage = JSON.parse(
-							localStorage.getItem('newrecord'),
+							localStorage.getItem('score'),
 						);
 						if (parseInt(scoreEl) > scorestorage) {
 							localStorage.setItem('newrecord', parseInt(scoreEl));
