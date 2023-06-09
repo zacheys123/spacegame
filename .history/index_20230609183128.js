@@ -5,8 +5,8 @@ const scoreboard = document.querySelector('#scoreboard');
 const fullscore = document.querySelector('#fullscore');
 const info = document.querySelector('#info');
 const c = canvas.getContext('2d');
-canvas.width = 1400;
-canvas.height = 768;
+canvas.width = '80%';
+canvas.height = 576;
 
 let game = { over: false, active: true, score: false, start: false };
 button.addEventListener('click', restart);
