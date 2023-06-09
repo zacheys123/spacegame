@@ -1,0 +1,7 @@
+* {
+	margin: 0;
+}
+.button:hover {
+	background: lightblue;
+	color: red;
+}
