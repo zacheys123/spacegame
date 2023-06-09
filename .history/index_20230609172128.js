@@ -352,7 +352,7 @@ function animate() {
 					if (game.score) {
 						scoreboard.style.display = 'flex';
 						canvas.style.display = 'none';
-						fullscore.textContent = scoreEl;
+						fullscore.innerHtml = scoreEl;
 					}
 				}, 4000);
 				setTimeout(() => {
