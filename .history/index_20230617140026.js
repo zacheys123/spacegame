@@ -66,35 +66,19 @@ mybutton.forEach((button) => {
 			case 'Easy':
 				levels.invaderspeed = 3;
 				levels.inv_projectile = 3;
-				game.begin = false;
+				game.begin = true;
 				canvasbody.style.display = 'flex';
 				canv.style.display = 'flex';
 
 				startboard.style.display = 'none';
 
-				console.log(game.begin);
+				console.log('Easy');
 				break;
 			case 'Intermediate':
-				levels.invaderspeed = 6;
-				levels.inv_projectile = 10;
-				game.begin = false;
-				canvasbody.style.display = 'flex';
-				canv.style.display = 'flex';
-
-				startboard.style.display = 'none';
-
-				console.log(game.begin);
+				console.log('Intermediate');
 				break;
 			case 'Hard':
-				levels.invaderspeed = 10;
-				levels.inv_projectile = 20;
-				game.begin = false;
-				canvasbody.style.display = 'flex';
-				canv.style.display = 'flex';
-
-				startboard.style.display = 'none';
-
-				console.log(game.begin);
+				console.log('Hard');
 				break;
 		}
 	});
@@ -380,7 +364,7 @@ const createparticles = ({
 };
 
 function animate() {
-	if (game.active && !game.begin) {
+	if (game.active && game.begin) {
 		requestAnimationFrame(animate);
 		c.fillStyle = 'black';
 		c.fillRect(0, 0, canvas.width, canvas.height);

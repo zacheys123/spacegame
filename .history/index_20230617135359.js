@@ -17,7 +17,7 @@ let game = {
 	active: true,
 	score: false,
 	start: false,
-	begin: false,
+	begin: true,
 };
 let levels = {
 	invaderspeed: 3,
@@ -66,35 +66,14 @@ mybutton.forEach((button) => {
 			case 'Easy':
 				levels.invaderspeed = 3;
 				levels.inv_projectile = 3;
-				game.begin = false;
-				canvasbody.style.display = 'flex';
-				canv.style.display = 'flex';
+
+				canv.style.display = 'block';
 
 				startboard.style.display = 'none';
-
-				console.log(game.begin);
 				break;
 			case 'Intermediate':
-				levels.invaderspeed = 6;
-				levels.inv_projectile = 10;
-				game.begin = false;
-				canvasbody.style.display = 'flex';
-				canv.style.display = 'flex';
-
-				startboard.style.display = 'none';
-
-				console.log(game.begin);
 				break;
 			case 'Hard':
-				levels.invaderspeed = 10;
-				levels.inv_projectile = 20;
-				game.begin = false;
-				canvasbody.style.display = 'flex';
-				canv.style.display = 'flex';
-
-				startboard.style.display = 'none';
-
-				console.log(game.begin);
 				break;
 		}
 	});

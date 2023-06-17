@@ -5,9 +5,7 @@ const scoreboard = document.querySelector('#scoreboard');
 const fullscore = document.querySelector('#fullscore');
 const startboard = document.querySelector('#startboard');
 const canv = document.querySelector('#canv');
-const canvasbody = document.querySelector('#canvasbody');
 const info = document.querySelector('#info');
-const mybutton = document.querySelectorAll('button');
 const c = canvas.getContext('2d');
 canvas.width = 1024;
 canvas.height = 768;
@@ -17,19 +15,15 @@ let game = {
 	active: true,
 	score: false,
 	start: false,
-	begin: false,
-};
-let levels = {
-	invaderspeed: 3,
-	inv_projectile: 5,
+	begin: true,
 };
 button.addEventListener('click', restart);
 // Player class
 document.addEventListener('DOMContentLoaded', () => {
 	parseInt(localStorage.setItem('score', 0), 10);
 	canv.style.display = 'none';
-	canvasbody.style.display = 'flex';
-	startboard.style.display = 'block';
+	startboard.style.display = 'none';
+	game.begin = true;
 });
 function restart() {
 	localStorage.removeItem('score');
@@ -58,46 +52,6 @@ addEventListener('keydown', ({ key }) => {
 		info.textContent = 'Loading Game...';
 		console.log(key);
 	}
-});
-
-mybutton.forEach((button) => {
-	button.addEventListener('click', (e) => {
-		switch (e.target.textContent) {
-			case 'Easy':
-				levels.invaderspeed = 3;
-				levels.inv_projectile = 3;
-				game.begin = false;
-				canvasbody.style.display = 'flex';
-				canv.style.display = 'flex';
-
-				startboard.style.display = 'none';
-
-				console.log(game.begin);
-				break;
-			case 'Intermediate':
-				levels.invaderspeed = 6;
-				levels.inv_projectile = 10;
-				game.begin = false;
-				canvasbody.style.display = 'flex';
-				canv.style.display = 'flex';
-
-				startboard.style.display = 'none';
-
-				console.log(game.begin);
-				break;
-			case 'Hard':
-				levels.invaderspeed = 10;
-				levels.inv_projectile = 20;
-				game.begin = false;
-				canvasbody.style.display = 'flex';
-				canv.style.display = 'flex';
-
-				startboard.style.display = 'none';
-
-				console.log(game.begin);
-				break;
-		}
-	});
 });
 
 class Player {
@@ -240,10 +194,7 @@ class Invader {
 					x: this.position.x + this.width / 2,
 					y: this.position.y + this.height,
 				},
-				velocity: {
-					x: 0,
-					y: val + Math.random() * val * levels.inv_projectile,
-				},
+				velocity: { x: 0, y: val + Math.random() * val * 20 },
 			}),
 		);
 	}
@@ -253,7 +204,7 @@ class Invader {
 class Grid {
 	constructor() {
 		this.position = { x: 0, y: 0 };
-		this.velocity = { x: levels.invaderspeed, y: 0 };
+		this.velocity = { x: 3, y: 0 };
 		this.invaders = [];
 
 		const rows = Math.floor(Math.random() * 5 + 2);
@@ -380,7 +331,7 @@ const createparticles = ({
 };
 
 function animate() {
-	if (game.active && !game.begin) {
+	if (game.active && game.begin) {
 		requestAnimationFrame(animate);
 		c.fillStyle = 'black';
 		c.fillRect(0, 0, canvas.width, canvas.height);
@@ -542,14 +493,14 @@ function animate() {
 		player.rotation = 0;
 		if (keys.a.pressed && player.position.x >= 0) {
 			player.rotation = -0.15;
-			player.velocity.x = -12;
+			player.velocity.x = -10;
 		} else if (
 			keys.d.pressed &&
 			player.position.x + player.width <= canvas.width
 		) {
 			player.rotation = 0.15;
 
-			player.velocity.x = 12;
+			player.velocity.x = 10;
 		} else {
 			player.velocity.x = 0;
 		}
