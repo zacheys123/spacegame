@@ -20,8 +20,8 @@ let game = {
 	begin: false,
 };
 let levels = {
-	invaderspeed: 0,
-	inv_projectile: 0,
+	invaderspeed: 3,
+	inv_projectile: 5,
 };
 button.addEventListener('click', restart);
 // Player class
@@ -387,6 +387,7 @@ function animate() {
 
 		player.update();
 
+		console.log(levels.invaderspeed, levels.inv_projectile);
 		particles.forEach((particle, ind) => {
 			if (particle.position.y - particle.radius >= canvas.height) {
 				particle.position.x = Math.random() * canvas.width;

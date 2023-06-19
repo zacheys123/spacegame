@@ -20,12 +20,6 @@
 				align-items: center;
 			}button{
 background-color: white;
-transition:all .6s ease-in-out;
-cursor:pointer;
-			}
-			button:hover{
-				background:rgb(4, 92, 121);
-				color:yellowgreen;
 			}
 	
 		</style>
@@ -68,16 +62,16 @@ cursor:pointer;
 					<button
 						class="button"
 						style="
-							background: rgb(205, 23, 233);
+							background: yellowgreen;
 							border-radius: 20px;
 							font-family: georgia;
-							padding:.7rem;
+							padding: 1.3rem;
 							color: purple;
 							font-weight: bold;
 							cursor: pointer;
 						"
 					>
-						<span id="info" style="background:inherit;	color: rgb(200, 234, 64);">Restart Game</span>
+						<span id="info">Restart Game</span>
 					</button>
 				</div>
 			</div>
@@ -86,12 +80,10 @@ cursor:pointer;
 		<div id="canvasbody"		
 		style="position: relative;">
 				<div id="startboard" >
-<div style="position:relative;background:rgb(3, 134, 121);width:100vw;
+<div style="position:relative;background:red;width:100vw;
 height:100vh;	display:flex;justify-content: center;
 				align-items: center;">
-<div style="position:absolute;flex-direction:column;display:flex;padding:1rem;background:inherit;">	
-	<p style="color:white;padding:1rem">Choose Level</p>
-	<button id="mybutton" style="margin:1rem;padding:.6rem;font-family:sans serif;">Easy</button>
+<div style="position:absolute;flex-direction:column;display:flex;background:yellowgreen;padding:1rem">	<button id="mybutton" style="margin:1rem;padding:.6rem;font-family:sans serif;">Easy</button>
 	<button id="mybutton" style="margin:1rem;padding:.6rem;font-family:sans serif;">Intermediate</button>
 	<button id="mybutton" style="margin:1rem;padding:.6rem;font-family:sans serif;">Hard</button></div>
 

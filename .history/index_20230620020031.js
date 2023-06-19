@@ -20,8 +20,8 @@ let game = {
 	begin: false,
 };
 let levels = {
-	invaderspeed: 0,
-	inv_projectile: 0,
+	invaderspeed,
+	inv_projectile,
 };
 button.addEventListener('click', restart);
 // Player class
