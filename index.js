@@ -64,8 +64,8 @@ mybutton.forEach((button) => {
 	button.addEventListener('click', (e) => {
 		switch (e.target.textContent) {
 			case 'Easy':
-				levels.invaderspeed = 3;
-				levels.inv_projectile = 3;
+				levels.invaderspeed = 2;
+				levels.inv_projectile = 2;
 				game.begin = false;
 				canvasbody.style.display = 'flex';
 				canv.style.display = 'flex';
